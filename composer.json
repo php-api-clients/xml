@@ -10,7 +10,6 @@
     ],
     "require": {
         "php": "^7.0",
-        "api-clients/installer": "^1.0",
         "api-clients/middleware": "^4.0",
         "ringcentral/psr7": "^1.2"
     },
