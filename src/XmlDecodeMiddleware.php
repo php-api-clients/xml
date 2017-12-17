@@ -6,11 +6,11 @@ use ApiClients\Foundation\Middleware\Annotation\ThirdLast;
 use ApiClients\Foundation\Middleware\ErrorTrait;
 use ApiClients\Foundation\Middleware\MiddlewareInterface;
 use ApiClients\Foundation\Middleware\PreTrait;
-use ApiClients\Tools\Json\JsonDecodeService;
 use GuzzleHttp\Psr7\BufferStream;
 use Psr\Http\Message\ResponseInterface;
 use React\Promise\CancellablePromiseInterface;
 use React\Stream\ReadableStreamInterface;
+use Verdant\XML2Array;
 use function React\Promise\resolve;
 
 class XmlDecodeMiddleware implements MiddlewareInterface
@@ -35,12 +35,12 @@ class XmlDecodeMiddleware implements MiddlewareInterface
         }
 
         if (!isset($options[self::class]) &&
-            strpos($response->getHeaderLine('Content-Type'), 'application/json') !== 0) {
+        strpos($response->getHeaderLine('Content-Type'), 'text/xml') !== 0) {
             return resolve($response);
         }
 
         if (isset($options[self::class][Options::CONTENT_TYPE]) &&
-            $response->getHeaderLine('Content-Type') !== $options[self::class][Options::CONTENT_TYPE]) {
+        $response->getHeaderLine('Content-Type') !== $options[self::class][Options::CONTENT_TYPE]) {
             return resolve($response);
         }
 
@@ -51,9 +51,8 @@ class XmlDecodeMiddleware implements MiddlewareInterface
             return resolve($response->withBody($stream));
         }
 
-        return $this->decodeService->decode($body)->then(function ($json) use ($response) {
-            $body = new XmlStream($json);
-            return resolve($response->withBody($body));
-        });
+        $xml = XML2Array::createArray($body);
+        $body = new XmlStream($xml);
+        return resolve($response->withBody($body));
     }
 }

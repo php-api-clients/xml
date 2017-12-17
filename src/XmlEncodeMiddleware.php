@@ -6,7 +6,7 @@ use ApiClients\Foundation\Middleware\Annotation\Third;
 use ApiClients\Foundation\Middleware\ErrorTrait;
 use ApiClients\Foundation\Middleware\MiddlewareInterface;
 use ApiClients\Foundation\Middleware\PostTrait;
-use ApiClients\Tools\Json\JsonEncodeService;
+use fillup\A2X;
 use Psr\Http\Message\RequestInterface;
 use React\Promise\CancellablePromiseInterface;
 use RingCentral\Psr7\BufferStream;
@@ -29,14 +29,13 @@ class XmlEncodeMiddleware implements MiddlewareInterface
         string $transactionId,
         array $options = []
     ): CancellablePromiseInterface {
-        if (!($request->getBody() instanceof JsonStream)) {
+        if (!($request->getBody() instanceof XmlStream)) {
             return resolve($request);
         }
 
-        return $this->encodeService->encode($request->getBody()->getJson())->then(function ($json) use ($request) {
-            $body = new BufferStream(strlen($json));
-            $body->write($json);
-            return resolve($request->withBody($body)->withAddedHeader('Content-Type', 'application/json'));
-        });
+        $xml = (new A2X($request->getBody()->getXml()))->asXml();
+        $body = new BufferStream(strlen($xml));
+        $body->write($xml);
+        return resolve($request->withBody($body)->withAddedHeader('Content-Type', 'text/xml'));
     }
 }

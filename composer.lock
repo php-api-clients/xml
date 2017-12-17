@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c08bc9417c24f31cf56c7bef15a1af55",
+    "content-hash": "7e466ad72cc45d2d4e283563805e86ec",
     "packages": [
         {
             "name": "api-clients/middleware",
@@ -181,6 +181,42 @@
             "time": "2014-09-09T13:34:57+00:00"
         },
         {
+            "name": "fillup/array2xml",
+            "version": "0.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fillup/array2xml.git",
+                "reference": "5ba10b911e62d65d43ef4d405bfcc6ff4ae46dbc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fillup/array2xml/zipball/5ba10b911e62d65d43ef4d405bfcc6ff4ae46dbc",
+                "reference": "5ba10b911e62d65d43ef4d405bfcc6ff4ae46dbc",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.24"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "fillup\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Phillip Shipley",
+                    "email": "phillip.shipley@gmail.com"
+                }
+            ],
+            "description": "Library for converting arrays to XML",
+            "time": "2016-10-14T15:38:30+00:00"
+        },
+        {
             "name": "psr/http-message",
             "version": "1.0.1",
             "source": {
@@ -333,6 +369,38 @@
                 "uri"
             ],
             "time": "2016-03-25T17:36:49+00:00"
+        },
+        {
+            "name": "verdant/xml2array",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rentpost/xml2array.git",
+                "reference": "b518d755a305fb4249027d20f8e9042bb733b857"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rentpost/xml2array/zipball/b518d755a305fb4249027d20f8e9042bb733b857",
+                "reference": "b518d755a305fb4249027d20f8e9042bb733b857",
+                "shasum": ""
+            },
+            "require": {
+                "lib-libxml": "*",
+                "lib-pcre": "*",
+                "php": ">=5.3.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Verdant\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Convert from XML to array, array to XML, based on libs from lalit.org",
+            "time": "2015-04-23T03:08:15+00:00"
         },
         {
             "name": "wyrihaximus/doctrine-annotation-autoloader",
@@ -3158,7 +3226,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "verdant/xml2array": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
