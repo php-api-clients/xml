@@ -6,6 +6,7 @@ use ApiClients\Foundation\Middleware\Annotation\Third;
 use ApiClients\Foundation\Middleware\ErrorTrait;
 use ApiClients\Foundation\Middleware\MiddlewareInterface;
 use ApiClients\Foundation\Middleware\PostTrait;
+use ApiClients\Foundation\Transport\ParsedContentsInterface;
 use fillup\A2X;
 use Psr\Http\Message\RequestInterface;
 use React\Promise\CancellablePromiseInterface;
@@ -29,11 +30,12 @@ class XmlEncodeMiddleware implements MiddlewareInterface
         string $transactionId,
         array $options = []
     ): CancellablePromiseInterface {
-        if (!($request->getBody() instanceof XmlStream)) {
+        $body = $request->getBody();
+        if (!($body instanceof ParsedContentsInterface)) {
             return resolve($request);
         }
 
-        $xml = (new A2X($request->getBody()->getXml()))->asXml();
+        $xml = (new A2X($body->getParsedContents()))->asXml();
         $body = new BufferStream(strlen($xml));
         $body->write($xml);
         return resolve($request->withBody($body)->withAddedHeader('Content-Type', 'text/xml'));

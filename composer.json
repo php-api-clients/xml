@@ -11,6 +11,7 @@
     "require": {
         "php": "^7.0",
         "api-clients/middleware": "^4.0",
+        "api-clients/transport": "^3.1",
         "fillup/array2xml": "^0.5.1",
         "ringcentral/psr7": "^1.2",
         "verdant/xml2array": "dev-master#b518d755a305fb4249027d20f8e9042bb733b857"

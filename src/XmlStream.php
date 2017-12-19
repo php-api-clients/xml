@@ -2,10 +2,11 @@
 
 namespace ApiClients\Middleware\Xml;
 
+use ApiClients\Foundation\Transport\ParsedContentsInterface;
 use Psr\Http\Message\StreamInterface;
 use RingCentral\Psr7\BufferStream;
 
-class XmlStream implements StreamInterface
+class XmlStream implements StreamInterface, ParsedContentsInterface
 {
     /**
      * @var array
@@ -28,7 +29,7 @@ class XmlStream implements StreamInterface
     /**
      * @return array
      */
-    public function getXml()
+    public function getParsedContents(): array
     {
         return $this->xml;
     }
