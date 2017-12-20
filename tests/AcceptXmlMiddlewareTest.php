@@ -1,8 +1,7 @@
 <?php declare(strict_types=1);
 
-namespace ApiClients\Tests\Middleware\Json;
+namespace ApiClients\Tests\Middleware\Xml;
 
-use ApiClients\Middleware\Json\AcceptJsonMiddleware;
 use ApiClients\Middleware\Xml\AcceptXmlMiddleware;
 use ApiClients\Tools\TestUtilities\TestCase;
 use React\EventLoop\Factory;
