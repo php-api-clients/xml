@@ -22,7 +22,7 @@ class XmlEncodeMiddlewareTest extends TestCase
         $modifiedRequest = await($middleware->pre($request, 'abc'), $loop);
         self::assertSame(
             Constant::XML,
-            (string) $modifiedRequest->getBody()
+            str_replace(["\r", "\n", '  '], '', (string) $modifiedRequest->getBody())
         );
         self::assertTrue($modifiedRequest->hasHeader('Content-Type'));
         self::assertSame('text/xml', $modifiedRequest->getHeaderLine('Content-Type'));

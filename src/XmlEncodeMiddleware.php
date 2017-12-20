@@ -7,7 +7,7 @@ use ApiClients\Foundation\Middleware\ErrorTrait;
 use ApiClients\Foundation\Middleware\MiddlewareInterface;
 use ApiClients\Foundation\Middleware\PostTrait;
 use ApiClients\Foundation\Transport\ParsedContentsInterface;
-use fillup\A2X;
+use LSS\Array2XML;
 use Psr\Http\Message\RequestInterface;
 use React\Promise\CancellablePromiseInterface;
 use RingCentral\Psr7\BufferStream;
@@ -35,7 +35,8 @@ class XmlEncodeMiddleware implements MiddlewareInterface
             return resolve($request);
         }
 
-        $xml = (new A2X($body->getParsedContents()))->asXml();
+        $key = key($body->getParsedContents());
+        $xml = Array2XML::createXML($key, $body->getParsedContents()[$key])->saveXML();
         $body = new BufferStream(strlen($xml));
         $body->write($xml);
 

@@ -7,10 +7,10 @@ use ApiClients\Foundation\Middleware\ErrorTrait;
 use ApiClients\Foundation\Middleware\MiddlewareInterface;
 use ApiClients\Foundation\Middleware\PreTrait;
 use GuzzleHttp\Psr7\BufferStream;
+use LSS\XML2Array;
 use Psr\Http\Message\ResponseInterface;
 use React\Promise\CancellablePromiseInterface;
 use React\Stream\ReadableStreamInterface;
-use Verdant\XML2Array;
 use function React\Promise\resolve;
 
 class XmlDecodeMiddleware implements MiddlewareInterface
