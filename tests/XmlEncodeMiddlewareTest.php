@@ -2,11 +2,8 @@
 
 namespace ApiClients\Tests\Middleware\Xml;
 
-use ApiClients\Middleware\Json\JsonStream;
-use ApiClients\Middleware\Json\JsonEncodeMiddleware;
 use ApiClients\Middleware\Xml\XmlEncodeMiddleware;
 use ApiClients\Middleware\Xml\XmlStream;
-use ApiClients\Tools\Json\JsonEncodeService;
 use ApiClients\Tools\TestUtilities\TestCase;
 use React\EventLoop\Factory;
 use RingCentral\Psr7\BufferStream;
@@ -19,16 +16,12 @@ class XmlEncodeMiddlewareTest extends TestCase
     {
         $loop = Factory::create();
         $middleware = new XmlEncodeMiddleware();
-        $stream = new XmlStream([
-            'foo' => [
-                'bar' => 'beer',
-            ],
-        ]);
+        $stream = new XmlStream(Constant::TREE);
         $request = new Request('GET', 'https://example.com', [], $stream);
 
         $modifiedRequest = await($middleware->pre($request, 'abc'), $loop);
         self::assertSame(
-            '<?xml version="1.0" encoding="UTF-8"?><foo><bar>beer</bar></foo>',
+            Constant::XML,
             (string) $modifiedRequest->getBody()
         );
         self::assertTrue($modifiedRequest->hasHeader('Content-Type'));
