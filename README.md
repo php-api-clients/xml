@@ -1,4 +1,4 @@
-# XML middleware for PHP 7.x
+# XML Encoding/Decoding middleware for PHP 7.x
 
 [![Build Status](https://travis-ci.org/php-api-clients/middleware-xml.svg?branch=master)](https://travis-ci.org/php-api-clients/middleware-xml)
 [![Latest Stable Version](https://poser.pugx.org/api-clients/middleware-xml/v/stable.png)](https://packagist.org/packages/api-clients/middleware-xml)
