@@ -26,17 +26,17 @@ class XmlStream implements StreamInterface, ParsedContentsInterface
         $this->bufferStream->write($jsonString);
     }
 
+    public function __toString()
+    {
+        return $this->getContents();
+    }
+
     /**
      * @return array
      */
     public function getParsedContents(): array
     {
         return $this->xml;
-    }
-
-    public function __toString()
-    {
-        return $this->getContents();
     }
 
     public function getContents()
@@ -94,6 +94,7 @@ class XmlStream implements StreamInterface, ParsedContentsInterface
 
     /**
      * Reads data from the buffer.
+     * @param mixed $length
      */
     public function read($length)
     {
@@ -102,6 +103,7 @@ class XmlStream implements StreamInterface, ParsedContentsInterface
 
     /**
      * Writes data to the buffer.
+     * @param mixed $string
      */
     public function write($string)
     {

@@ -19,8 +19,8 @@ class XmlDecodeMiddleware implements MiddlewareInterface
     use ErrorTrait;
 
     /**
-     * @param ResponseInterface $response
-     * @param array $options
+     * @param  ResponseInterface           $response
+     * @param  array                       $options
      * @return CancellablePromiseInterface
      *
      * @ThirdLast()
@@ -48,11 +48,13 @@ class XmlDecodeMiddleware implements MiddlewareInterface
         if ($body === '') {
             $stream = new BufferStream(0);
             $stream->write($body);
+
             return resolve($response->withBody($stream));
         }
 
         $xml = XML2Array::createArray($body);
         $body = new XmlStream($xml);
+
         return resolve($response->withBody($body));
     }
 }

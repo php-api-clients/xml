@@ -19,8 +19,8 @@ class XmlEncodeMiddleware implements MiddlewareInterface
     use ErrorTrait;
 
     /**
-     * @param RequestInterface $request
-     * @param array $options
+     * @param  RequestInterface            $request
+     * @param  array                       $options
      * @return CancellablePromiseInterface
      *
      * @Third()
@@ -38,6 +38,7 @@ class XmlEncodeMiddleware implements MiddlewareInterface
         $xml = (new A2X($body->getParsedContents()))->asXml();
         $body = new BufferStream(strlen($xml));
         $body->write($xml);
+
         return resolve($request->withBody($body)->withAddedHeader('Content-Type', 'text/xml'));
     }
 }
