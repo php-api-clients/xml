@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace ApiClients\Tests\Middleware\Xml;
+namespace ApiClients\Tests\Tools\Xml;
 
 final class Constant
 {

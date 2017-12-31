@@ -1,11 +1,11 @@
 # XML Encoding/Decoding middleware for PHP 7.x
 
-[![Build Status](https://travis-ci.org/php-api-clients/middleware-xml.svg?branch=master)](https://travis-ci.org/php-api-clients/middleware-xml)
-[![Latest Stable Version](https://poser.pugx.org/api-clients/middleware-xml/v/stable.png)](https://packagist.org/packages/api-clients/middleware-xml)
-[![Total Downloads](https://poser.pugx.org/api-clients/middleware-xml/downloads.png)](https://packagist.org/packages/api-clients/middleware-xml/stats)
-[![Code Coverage](https://scrutinizer-ci.com/g/php-api-clients/middleware-xml/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/php-api-clients/middleware-xml/?branch=master)
-[![License](https://poser.pugx.org/api-clients/middleware-xml/license.png)](https://packagist.org/packages/api-clients/middleware-xml)
-[![PHP 7 ready](http://php7ready.timesplinter.ch/php-api-clients/middleware-xml/badge.svg)](https://appveyor-ci.org/php-api-clients/middleware-xml)
+[![Build Status](https://travis-ci.org/php-api-clients/xml.svg?branch=master)](https://travis-ci.org/php-api-clients/xml)
+[![Latest Stable Version](https://poser.pugx.org/api-clients/xml/v/stable.png)](https://packagist.org/packages/api-clients/xml)
+[![Total Downloads](https://poser.pugx.org/api-clients/xml/downloads.png)](https://packagist.org/packages/api-clients/xml/stats)
+[![Code Coverage](https://scrutinizer-ci.com/g/php-api-clients/xml/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/php-api-clients/xml/?branch=master)
+[![License](https://poser.pugx.org/api-clients/xml/license.png)](https://packagist.org/packages/api-clients/xml)
+[![PHP 7 ready](http://php7ready.timesplinter.ch/php-api-clients/xml/badge.svg)](https://appveyor-ci.org/php-api-clients/xml)
 
 # License
 
